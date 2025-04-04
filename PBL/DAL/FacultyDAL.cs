@@ -6,21 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PBL.controller
+namespace PBL.DAL
 {
-    class ClassController
+    class FacultyDAL
     {
         private readonly AppDBContext _context;
 
-        public ClassController()
+        public FacultyDAL()
         {
             _context = new AppDBContext();
         }
 
-        public List<Class> selectAll()
+        public List<Faculty> sellectAll()
         {
-            List <Class> classes= _context.listClass.ToList();
-            return classes;
+            List<Faculty> faculties = _context.listFaculty.ToList();
+            return faculties;
         }
     }
 }

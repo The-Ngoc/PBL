@@ -8,24 +8,29 @@ using System.Threading.Tasks;
 
 namespace PBL.module
 {
+    [Table("Khoa")]
     class Faculty
     {
         [Key]
         [Column("MaKhoa")]
-        public string idFaculty { get; set; }
+        public string _idFaculty { get; set; }
+
         [Column("TenKhoa")]
-        public string nameFaculty { get; set; }
+        public string _nameFaculty { get; set; }
+
+        public List<Teacher> listClass { get; set; } = new List<Teacher>();
+        public List<Subject> listSubject { get; set; } = new List<Subject>();
 
         public Faculty()
         {
-            this.idFaculty = "";
-            this.nameFaculty = "";
+            this._idFaculty = "";
+            this._nameFaculty = "";
         }
 
         public Faculty(string idFaculty, string nameFaculty)
         {
-            this.idFaculty = idFaculty;
-            this.nameFaculty = nameFaculty;
+            this._idFaculty = idFaculty;
+            this._nameFaculty = nameFaculty;
         }
 
     }

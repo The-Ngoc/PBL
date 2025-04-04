@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PBL.module;
 
+
 namespace PBL.data
 {
     class AppDBContext : DbContext
     {
-        public DbSet<Faculty> lisFaculty { get; set; }
+        public DbSet<Faculty> listFaculty { get; set; }
         public DbSet<Subject> listSubject { get; set; }
         public DbSet<Class> listClass { get; set; }
+
+        public DbSet<Teacher> listTeacher { get; set; }
+        public DbSet<Room> listRoom { get; set; }
+        public DbSet<Assign> listAssign { get; set; }
+        public DbSet<ClassSession> listClassSession { get; set; }
+        public DbSet<Schedule> listSchedule { get; set; }
 
 
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
@@ -27,7 +34,7 @@ namespace PBL.data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=BAPBOMM\\MSSQLSERVER01;Initial Catalog=Data01;Integrated Security=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-I5VFBP6\\BAPBOM;Initial Catalog=PBL3;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             }
         }
 
@@ -36,6 +43,11 @@ namespace PBL.data
             modelBuilder.Entity<Faculty>().ToTable("Khoa");
             modelBuilder.Entity<Subject>().ToTable("MonHoc");
             modelBuilder.Entity<Class>().ToTable("LopHoc");
+            modelBuilder.Entity<Teacher>().ToTable("GiangVien");
+            modelBuilder.Entity<Room>().ToTable("PhongHoc");
+            modelBuilder.Entity<Assign>().ToTable("PhanCong");
+            modelBuilder.Entity<ClassSession>().ToTable("BuoiHoc");
+            modelBuilder.Entity<Schedule>().ToTable("ThoiKhoaBieu");
         }
     }
 }
